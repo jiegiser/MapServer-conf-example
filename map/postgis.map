@@ -1,0 +1,48 @@
+MAP
+NAME "grid-demo"
+STATUS ON
+SIZE 400 300
+SYMBOLSET "../etc/symbols.txt"
+# ESPG:3978 extents:
+EXTENT -180 -90 180 90
+UNITS DD
+SHAPEPATH "../data"
+IMAGECOLOR 255 255 255
+FONTSET "../etc/fonts.txt"
+MAXSIZE 4096
+
+
+WEB
+  IMAGEPATH "C:/ms4w/tmp/ms_tmp/" 
+  IMAGEURL "/ms_tmp/"
+  METADATA
+    "ows_enable_request" "*"
+    "wms_enable_request" "*"
+  END
+END
+
+
+PROJECTION
+  "init=epsg:4326"
+END
+
+
+
+LAYER
+  NAME "postgis"
+  CONNECTIONTYPE postgis
+  CONNECTION "host=localhost port=5432 dbname=pycsw user=postgres password=postgres"
+  DATA "geom from states" # 格式是 <columnname> from <tablename>
+
+  TYPE POLYGON
+  STATUS ON
+  OPACITY 40
+  
+  CLASS
+    NAME "popplace"
+    COLOR 135 206 235
+    OUTLINECOLOR 255 165 0
+  END
+END
+
+END # Map File
