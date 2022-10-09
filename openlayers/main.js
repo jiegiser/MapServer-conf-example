@@ -33,6 +33,7 @@ const layers = [
   }),
   */
   
+  /*
   // label layer
   new ImageLayer({
     // extent: [-13884991, 2870341, -7455066, 6338219],
@@ -44,7 +45,19 @@ const layers = [
       serverType: 'mapserver',
     }),
   }),
-  
+  */
+
+  // symbol layer
+  new ImageLayer({
+    // extent: [-13884991, 2870341, -7455066, 6338219],
+    source: new ImageWMS({
+      url: 'http://localhost/cgi-bin/mapserv.exe?map=/ms4w/apps/cgi-viewer/map/symbol.map',
+      params: {
+        'LAYERS': ['symbol'],
+      },
+      serverType: 'mapserver',
+    }),
+  }),
 ];
 new Map({
   layers: layers,

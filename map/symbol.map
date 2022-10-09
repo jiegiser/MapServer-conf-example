@@ -1,0 +1,105 @@
+MAP
+NAME "grid-demo"
+STATUS ON
+SIZE 400 300
+SYMBOLSET "../etc/symbols.txt"
+# ESPG:3978 extents:
+EXTENT -180 -90 180 90
+UNITS DD
+SHAPEPATH "../data"
+IMAGECOLOR 255 255 255
+FONTSET "../etc/fonts.txt"
+MAXSIZE 4096
+
+
+WEB
+  IMAGEPATH "C:/ms4w/tmp/ms_tmp/" 
+  IMAGEURL "/ms_tmp/"
+  METADATA
+    "ows_enable_request" "*"
+    "wms_enable_request" "*"
+  END
+END
+
+
+PROJECTION
+  "init=epsg:4326"
+END
+
+
+
+LAYER
+  NAME "symbol"
+  TYPE POINT
+  STATUS ON
+  DATA "popplace1.shp"
+  METADATA
+    "wms_title" "symbol"
+  END
+
+  PROJECTION
+    "init=epsg:4326"
+  END
+
+  CLASS
+    STYLE
+      SYMBOL "square"
+      SIZE 16
+      COLOR 176 224 230
+      OUTLINECOLOR 0 0 0
+    END
+    STYLE
+      SYMBOL "circle"
+      SIZE 10
+      COLOR 220 220 220
+    END
+    STYLE
+      SYMBOL "star-dots"
+      SIZE 10
+      COLOR 0 128 128
+    END
+  END
+END
+
+SYMBOL
+  NAME "square"
+  TYPE vector
+  POINTS
+    0 0
+    0 1
+    1 1
+    1 0
+    0 0
+  END
+  FILLED true
+  ANCHORPOINT 0.5 0.5
+END
+
+SYMBOL
+  NAME "circle"
+  TYPE ellipse
+  POINTS
+    1 1
+  END
+  FILLED true
+  ANCHORPOINT 0.5 0.5
+END
+
+SYMBOL
+  NAME "star-dots"
+  TYPE vector
+  FILLED true
+  POINTS
+    0 0.375
+    0.35 0.375
+    1 0.375
+    0.75 0.625
+    0.875 1
+    0.5 0.75
+    0.125 1
+    0.25 0.625
+  END
+END
+
+
+END # Map File
