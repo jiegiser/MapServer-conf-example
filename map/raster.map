@@ -1,0 +1,49 @@
+MAP
+NAME "grid-demo"
+STATUS ON
+SIZE 400 300
+SYMBOLSET "../etc/symbols.txt"
+# ESPG:3978 extents:
+EXTENT -180 -90 180 90
+UNITS DD
+SHAPEPATH "../data"
+IMAGECOLOR 255 255 255
+FONTSET "../etc/fonts.txt"
+MAXSIZE 4096
+
+
+WEB
+  IMAGEPATH "C:/ms4w/tmp/ms_tmp/" 
+  IMAGEURL "/ms_tmp/"
+  METADATA
+    "ows_enable_request" "*"
+    "wms_enable_request" "*"
+#    "wms_title" "MS4W Demo wMs Server"
+#    "wms_onlineresource" "http://localhost/cgi-bin/mapserv.exe?map=/ms4w/apps/cgi-viewer/map/raster.map"
+#    "wms_abstract" "This demonstration server was setup by GatewayGeo"
+#    "wms_srs" "EPSG:4326"
+#    "wms_feature_info_mime_type" "text/html"
+#    "wms_format" "image/png"
+  END
+END
+
+
+PROJECTION
+  "init=epsg:4326"
+END
+
+
+LAYER
+  NAME "bathymetry"
+  STATUS ON  
+  METADATA
+    "wms_title" "Elevation/Bathymetry"
+  END
+  TYPE RASTER
+  DATA "bath_mapserver1.tif"
+  PROJECTION
+    "init=epsg:4326"
+  END
+END
+
+END # Map File

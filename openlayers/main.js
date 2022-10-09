@@ -8,21 +8,37 @@ const layers = [
   new TileLayer({
     source: new OSM(),
   }),
+  // shp layer
   new ImageLayer({
-    extent: [-13884991, 2870341, -7455066, 6338219],
+    // extent: [-13884991, 2870341, -7455066, 6338219],
     source: new ImageWMS({
-      url: 'https://ahocevar.com/geoserver/wms',
-      params: {'LAYERS': 'topp:states'},
-      ratio: 1,
-      serverType: 'geoserver',
+      url: 'http://localhost/cgi-bin/mapserv.exe?map=/ms4w/apps/cgi-viewer/map/sample.map',
+      params: {
+        'LAYERS': ['road'],
+      },
+      serverType: 'mapserver',
     }),
   }),
+  /*
+  // raster layer
+  new ImageLayer({
+    // extent: [-13884991, 2870341, -7455066, 6338219],
+    source: new ImageWMS({
+      url: 'http://localhost/cgi-bin/mapserv.exe?map=/ms4w/apps/cgi-viewer/map/raster.map',
+      params: {
+        'LAYERS': ['bathymetry'],
+      },
+      serverType: 'mapserver',
+    }),
+  }),
+  */
 ];
 const map = new Map({
   layers: layers,
   target: 'map',
   view: new View({
-    center: [-10997148, 4569099],
+    center: [-98.90, 51.56],
     zoom: 4,
+    projection: "EPSG:4326"
   }),
 });
