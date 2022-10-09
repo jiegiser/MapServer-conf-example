@@ -1,0 +1,62 @@
+MAP
+NAME "grid-demo"
+STATUS ON
+SIZE 400 300
+SYMBOLSET "../etc/symbols.txt"
+# ESPG:3978 extents:
+EXTENT -180 -90 180 90
+UNITS DD
+SHAPEPATH "../data"
+IMAGECOLOR 255 255 255
+FONTSET "../etc/fonts.txt"
+MAXSIZE 4096
+
+
+WEB
+  IMAGEPATH "C:/ms4w/tmp/ms_tmp/" 
+  IMAGEURL "/ms_tmp/"
+  METADATA
+    "ows_enable_request" "*"
+    "wms_enable_request" "*"
+  END
+END
+
+
+PROJECTION
+  "init=epsg:4326"
+END
+
+
+
+LAYER
+  NAME "label"
+  METADATA
+    "wms_title" "label"
+  END
+  TYPE POINT
+  STATUS ON
+
+  DATA "popplace1.shp"
+  PROJECTION
+    "init=epsg:4326"
+  END
+  CLASS
+    NAME "popplace"
+    COLOR 135 206 235
+    OUTLINECOLOR 255 165 0
+    LABEL
+      TEXT "[NAME]"
+      COLOR  255 0 0
+      FONT sans-italic
+      TYPE truetype
+      SIZE 10
+      POSITION AUTO     
+      PARTIALS FALSE
+      OUTLINECOLOR 255 255 255      
+    END
+  END
+END
+
+
+
+END # Map File
