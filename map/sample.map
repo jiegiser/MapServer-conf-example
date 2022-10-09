@@ -1,0 +1,95 @@
+#
+# Start of map file
+#
+#
+MAP
+NAME "cgi-demo"
+STATUS ON
+SIZE 400 300
+SYMBOLSET "../etc/symbols.txt"
+## ESPG:3978 extents:
+EXTENT -2200000 -712631 3072800 3840000
+UNITS METERS
+SHAPEPATH "../data"
+IMAGECOLOR 255 255 255
+FONTSET "../etc/fonts.txt"
+
+
+#
+# Start of web interface definition
+#
+WEB
+  MINSCALEDENOM 2000000
+  MAXSCALEDENOM 50000000
+
+  IMAGEPATH "C:/ms4w/tmp/ms_tmp/" 
+  IMAGEURL "/ms_tmp/"
+  TEMPLATE "../htdocs/viewer-template.html"  
+END
+
+#
+# Output projection
+#
+# PROJECTION
+#   "init=epsg:3978"
+# END
+
+#
+# Start of legend
+#
+# LEGEND
+#   KEYSIZE 18 12
+#   LABEL
+#     TYPE BITMAP
+#     SIZE MEDIUM
+#     COLOR 0 0 89
+#   END
+#   STATUS ON
+#   TEMPLATE "../htdocs/html-legend.html"  
+# END
+
+#
+# Start of scalebar
+#
+ SCALEBAR
+   IMAGECOLOR 255 255 255
+   LABEL
+     COLOR 0 0 0 
+     SIZE SMALL
+   END
+   SIZE 200 5
+   COLOR 255 255 255
+   BACKGROUNDCOLOR 0 0 0
+   OUTLINECOLOR 0 0 0
+   UNITS kilometers
+   INTERVALS 5
+   STATUS ON
+ END
+
+
+# QUERYMAP
+#   STYLE HILITE
+#   COLOR 255 0 0
+# END
+
+
+#
+# Start of layer definitions
+#
+
+
+LAYER
+  NAME "bathymetry"
+  STATUS ON  
+  METADATA
+    "wms_title" "Elevation/Bathymetry"
+  END
+  TYPE RASTER
+  DATA "bath_mapserver.tif"
+  PROJECTION
+    "init=epsg:3978"
+  END
+END
+
+
+END # Map File
