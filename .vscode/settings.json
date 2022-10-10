@@ -1,0 +1,6 @@
+{
+  "files.associations": {
+    "mapserver.h": "c",
+    "mapshape.h": "c"
+  }
+}
